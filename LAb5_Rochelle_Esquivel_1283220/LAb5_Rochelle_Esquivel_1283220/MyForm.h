@@ -8,6 +8,7 @@ namespace LAb5RochelleEsquivel1283220 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Summary for MyForm
@@ -78,7 +79,7 @@ namespace LAb5RochelleEsquivel1283220 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(385, 134);
+			this->button1->Location = System::Drawing::Point(437, 107);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 2;
@@ -120,8 +121,27 @@ namespace LAb5RochelleEsquivel1283220 {
 #pragma endregion
 		array <Pokemon^>^ miPokedex;
 		int array_size = 100;
+		int cant_Pokemon = 0;
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+		if (System::Windows::Forms::DialogResult::OK == openFileDialog1->ShowDialog()) {
+			StreamReader^ inputStream = gcnew StreamReader(openFileDialog1->FileName);
+			if (inputStream != nullptr) {
+				String^ linea = inputStream->ReadLine();
+				while (linea && (cant_Pokemon < array_size)) {
 
+					array<String^>^ datos = linea->Split(',');
+					Pokemon^ miPokemon = gcnew Pokemon();
+					miPokemon->establecer_Tipo(datos[0]);
+					miPokemon->establecer_Nombre(datos[1]);
+					miPokemon->establecer_Gen(datos[2]);
+
+
+					linea = inputStream->ReadLine();
+					cant_Pokemon++;
+				}
+			}
+		}
+	}
+		   
 	};
 }
