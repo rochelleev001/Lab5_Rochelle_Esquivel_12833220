@@ -1,0 +1,3 @@
+172, Pichu, Gen 2
+007, Squirtle, Gen 1
+001 ,Bulbasaur,Gen 1
