@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Pokemon.h"
 namespace LAb5RochelleEsquivel1283220 {
 
 	using namespace System;
@@ -21,6 +21,7 @@ namespace LAb5RochelleEsquivel1283220 {
 			//
 			//TODO: Add the constructor code here
 			//
+			miPokedex = gcnew array <Pokemon^>(array_size);
 		}
 
 	protected:
@@ -36,8 +37,11 @@ namespace LAb5RochelleEsquivel1283220 {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::ListBox^ lstNombres;
+	private: System::Windows::Forms::ListBox^ lstGen;
 
 	private:
 		/// <summary>
@@ -53,8 +57,10 @@ namespace LAb5RochelleEsquivel1283220 {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->lstNombres = (gcnew System::Windows::Forms::ListBox());
+			this->lstGen = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -66,23 +72,44 @@ namespace LAb5RochelleEsquivel1283220 {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"label1";
 			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(275, 100);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 1;
-			// 
 			// openFileDialog1
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(385, 134);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 2;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// lstNombres
+			// 
+			this->lstNombres->FormattingEnabled = true;
+			this->lstNombres->Location = System::Drawing::Point(265, 33);
+			this->lstNombres->Name = L"lstNombres";
+			this->lstNombres->Size = System::Drawing::Size(120, 95);
+			this->lstNombres->TabIndex = 3;
+			// 
+			// lstGen
+			// 
+			this->lstGen->FormattingEnabled = true;
+			this->lstGen->Location = System::Drawing::Point(265, 163);
+			this->lstGen->Name = L"lstGen";
+			this->lstGen->Size = System::Drawing::Size(120, 95);
+			this->lstGen->TabIndex = 4;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(559, 362);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->lstGen);
+			this->Controls->Add(this->lstNombres);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
@@ -91,5 +118,10 @@ namespace LAb5RochelleEsquivel1283220 {
 
 		}
 #pragma endregion
+		array <Pokemon^>^ miPokedex;
+		int array_size = 100;
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+
 	};
 }
