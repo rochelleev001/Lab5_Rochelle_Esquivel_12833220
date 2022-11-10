@@ -94,6 +94,7 @@ namespace LAb5RochelleEsquivel1283220 {
 			this->lstNombres->Name = L"lstNombres";
 			this->lstNombres->Size = System::Drawing::Size(120, 95);
 			this->lstNombres->TabIndex = 3;
+			this->lstNombres->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::lstNombres_SelectedIndexChanged);
 			// 
 			// lstGen
 			// 
@@ -135,13 +136,25 @@ namespace LAb5RochelleEsquivel1283220 {
 					miPokemon->establecer_Nombre(datos[1]);
 					miPokemon->establecer_Gen(datos[2]);
 
+					miPokedex[cant_Pokemon] = miPokemon;
 
 					linea = inputStream->ReadLine();
 					cant_Pokemon++;
 				}
 			}
+			inputStream->Close();
+			for (int i = 0; i < cant_Pokemon; i++) {
+				lstNombres->Items->Add(miPokedex[i]->obtener_Nombre());
+			}
 		}
 	}
 		   
-	};
+	private: System::Void lstNombres_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (lstNombres->SelectedIndex >= 0) {
+			String^ info_Pokemon = "Nombre:" + miPokedex[lstNombres->SelectedIndex]->obtener_Nombre()
+			+ "Generación:" + miPokedex[lstNombres->SelectedIndex]->obtener_Gen()
+			+ "Tipo:" + miPokedex[lstNombres->SelectedIndex]->obtener_Tipo();
+		}
+	}
+};
 }
