@@ -42,7 +42,9 @@ namespace LAb5RochelleEsquivel1283220 {
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::ListBox^ lstNombres;
-	private: System::Windows::Forms::ListBox^ lstGen;
+	private: System::Windows::Forms::TextBox^ textBox1;
+
+
 
 	private:
 		/// <summary>
@@ -61,7 +63,7 @@ namespace LAb5RochelleEsquivel1283220 {
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->lstNombres = (gcnew System::Windows::Forms::ListBox());
-			this->lstGen = (gcnew System::Windows::Forms::ListBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -96,20 +98,20 @@ namespace LAb5RochelleEsquivel1283220 {
 			this->lstNombres->TabIndex = 3;
 			this->lstNombres->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::lstNombres_SelectedIndexChanged);
 			// 
-			// lstGen
+			// textBox1
 			// 
-			this->lstGen->FormattingEnabled = true;
-			this->lstGen->Location = System::Drawing::Point(265, 163);
-			this->lstGen->Name = L"lstGen";
-			this->lstGen->Size = System::Drawing::Size(120, 95);
-			this->lstGen->TabIndex = 4;
+			this->textBox1->Location = System::Drawing::Point(382, 176);
+			this->textBox1->Multiline = true;
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(100, 93);
+			this->textBox1->TabIndex = 4;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(559, 362);
-			this->Controls->Add(this->lstGen);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->lstNombres);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
@@ -151,9 +153,11 @@ namespace LAb5RochelleEsquivel1283220 {
 		   
 	private: System::Void lstNombres_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (lstNombres->SelectedIndex >= 0) {
-			String^ info_Pokemon = "Nombre:" + miPokedex[lstNombres->SelectedIndex]->obtener_Nombre()
-			+ "Generación:" + miPokedex[lstNombres->SelectedIndex]->obtener_Gen()
+			String^ info_Pokemon = "Nombre:" + miPokedex[lstNombres->SelectedIndex]->obtener_Nombre() + "\r\n"
+			+ "Generación:" + miPokedex[lstNombres->SelectedIndex]->obtener_Gen() + "\r\n"
 			+ "Tipo:" + miPokedex[lstNombres->SelectedIndex]->obtener_Tipo();
+
+			textBox1->Text = info_Pokemon;
 		}
 	}
 };
