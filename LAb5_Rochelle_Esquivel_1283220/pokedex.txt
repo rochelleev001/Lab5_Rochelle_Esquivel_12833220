@@ -1,3 +1,23 @@
-172, Pichu, Gen 2
-007, Squirtle, Gen 1
-001 ,Bulbasaur,Gen 1
+004, Charmander, 1
+007, Squirtle, 1
+001 ,Bulbasaur, 1
+012, Butterfree, 1
+025, Pikachu, 1
+026, Raichu, 1
+035, Clefairy, 1
+039, Jigglypuff, 1
+077, Ponyta, 1
+133, Eevee, 1
+172, Pichu, 2
+183, Marill, 2
+190, Aipom, 2
+196, Espeon, 2
+207, Gligar, 2
+222, Corsola, 2
+224, Octillery, 2
+221, Piloswine, 2
+223, Remoraid, 2
+215, Sneasel, 2
+
+
+
